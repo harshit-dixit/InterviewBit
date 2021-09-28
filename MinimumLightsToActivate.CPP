@@ -1,24 +1,30 @@
 int Solution::solve(vector<int> &A, int B) {
     int n=A.size();
-    int i=0,j,ans=0;
-    while(i<n)
+    int i,j,ans=0,x;
+    i=-1;
+    x=-1;
+    j=B-1;
+    while(x<n-1)
     {
-        j=i+B-1;
-        if(j>=n)    j=n-1;
-        while(j>i-1)
+        if(j>n-1) j=n-1;
+        while(j>i)
         {
             if(A[j]==1)
             {
                 ans++;
-                j+=B-1;
-                if(j>=n)    j=n-1;
+                x=j+B-1;
                 break;
             }
-            else j--;
+            else    j--;
         }
-        if(j==i-1)  break;
-        else i=j+1;
+        if(j==i)
+        {
+            ans=0;
+            break;
+        }
+        else    i=j;
+        j+=2*B-1;
     }
-    if(ans==0)  cout<<-1<<"\n";
-    else    cout<<ans<<"\n";
+    if(ans==0)  return -1;
+    else return ans;
 }
