@@ -15,12 +15,10 @@ string Solution::solve(string A) {
                 if(str[k]>y)
                 {
                     temp=str[k];
-                    while(k>j)
-                    {
-                        str[k]=str[k-1];
-                        k--;
-                    }
-                    str[k]=temp;
+                    str[k]=str[i-1];
+                    str[i-1]=temp;
+                    k=j;
+                    sort(str.begin()+i,str.end());
                 }
                 else    k--;
             }
@@ -29,10 +27,3 @@ string Solution::solve(string A) {
     }
     return "-1";
 }
-
-// Your submission failed for the following input:
-// A : "892795"
-// Your function returned the following :
-// 892975
-// The expected returned value :
-// 892957
